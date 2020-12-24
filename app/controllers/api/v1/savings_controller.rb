@@ -34,7 +34,7 @@ class Api::V1::SavingsController < ApplicationController
     private
 
     def saving_params
-        params.require(:saving).permit('fields')
+        params.require(:saving).permit(:name, :bank_name, :amount, :category, :user_id)
     end
     
     
