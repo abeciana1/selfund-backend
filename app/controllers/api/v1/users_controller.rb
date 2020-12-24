@@ -1,4 +1,7 @@
+require "pry"
+
 class Api::V1::UsersController < ApplicationController
+    skip_before_action :authorized, only: [:index, :create, :show]
     
     def index
         users = User.all
@@ -15,6 +18,7 @@ class Api::V1::UsersController < ApplicationController
     end
     
     def create
+        # binding.pry
         @user = User.create(user_params)
         if @user.valid?
             # render json: { user: UserSerializer.new(user) }, status: :created
